@@ -7,7 +7,7 @@ uuidv4()
 const TodoWrapper = () => {
     const [todos, setTodos] = React.useState([])
     function addTodo(todo) {
-        setTodos([...todos, { id: uuidv4(), task: todo, completed: false, isEditing: false }])
+        todo !== "" && setTodos([...todos, { id: uuidv4(), task: todo, completed: false, isEditing: false }])
     }
     function deleteTodo(id) {
         setTodos(todos.filter(todo => todo.id !== id))
