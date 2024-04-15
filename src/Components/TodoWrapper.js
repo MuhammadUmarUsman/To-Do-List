@@ -13,10 +13,14 @@ const TodoWrapper = () => {
         setTodos(todos.filter(todo => todo.id !== id))
     }
 
+    function toggleComplete(id) {
+        setTodos(todos.map(todo => todo.id === id ? { ...todo, completed: !todo.completed } : todo
+        ))
+    }
     return (
         <div className='todo-wrapper'>
             <TodoForm addTodo={addTodo} />
-            {todos && todos.map(todo => <Todos key={todo.id} value={todo.task} deleteTodo={deleteTodo} id={todo.id} />)}
+            {todos && todos.map(todo => <Todos key={todo.id} value={todo.task} deleteTodo={deleteTodo} id={todo.id} toggleComplete={toggleComplete} isCompleted={todo.completed} />)}
         </div>
 
     )
